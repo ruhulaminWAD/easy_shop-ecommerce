@@ -1,0 +1,55 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('admin_users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('phone')->nullable();
+            $table->string('brand')->nullable();
+            $table->string('category')->nullable();
+            $table->string('product')->nullable();
+            $table->string('slider')->nullable();
+            $table->string('coupon')->nullable();
+            $table->string('shipping_area')->nullable();
+            $table->string('blog')->nullable();
+            $table->string('setting')->nullable();
+            $table->string('all_user')->nullable();
+            $table->string('return_order')->nullable();
+            $table->string('order')->nullable();
+            $table->string('report')->nullable();
+            $table->string('stock')->nullable();
+            $table->string('review ')->nullable();
+            $table->string('adminuserrole')->nullable();
+            $table->string('type')->default(2);
+            $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('admin_users');
+    }
+};
